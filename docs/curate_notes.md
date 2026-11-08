@@ -7,7 +7,7 @@ Read with scepticism: every study below is small, single-centre, and judged by i
 
 Full re-analysis with the per-patient source data: `dosing/khong2025_rct_check.ipynb`.
 
-- Did **not** use the per-patient quadratic. The quadratic calibration ("Function 1") "could therefore not be applied to this study"; a proportional rule (constant trough-to-dose ratio from one day to the next) was used instead.
+- Used CURATE.AI's **linear (proportional) variant**, "Function 2" (constant trough-to-dose ratio from one day to the next). The quadratic calibration the protocol planned ("Function 1") "could therefore not be applied to this study".
 - Primary outcome 24.2% vs 38.4% of days far off target. Reported P = 0.029; with the two-sided Wilcoxon test the figure legend names, the published data give P = 0.059 (0.029 matches a Welch t-test).
 - Benefit is mostly less under-dosing (mean trough 8.4 vs 7.6 ng/mL).
 
@@ -44,7 +44,7 @@ Full re-analysis with the per-patient source data: `dosing/khong2025_rct_check.i
 
 ## Pattern across the five studies
 
-1. The **quadratic per-patient model has not been shown to beat simpler rules**: in warfarin the linear version predicted slightly better; the only randomized trial dropped the quadratic for a proportional rule.
+1. CURATE.AI comes in a **linear** and a **quadratic** variant. The quadratic has not been shown to beat the linear one: in warfarin the linear version predicted slightly better, and the only randomized trial used the linear variant.
 2. **Calibration is the bottleneck**: 3 of 18 (hypertension/diabetes), 3 of 10 (chemotherapy) reached the dosing stage.
 3. **No outcome benefit over usual care has been shown with the quadratic model.** Agreement with physicians and "feasibility" are the main reported results.
 4. All studies are by the developers, small, mostly single-centre and unblinded.

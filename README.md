@@ -12,7 +12,7 @@ QPOP's design is sensible and its lab signal is real but modest; noise limits it
 
 | Study | Claim | What the published data show | Notebook |
 |---|---|---|---|
-| Khong 2025, tacrolimus after liver transplant, randomized (n = 56) | CURATE.AI-group dosing ("PPM") cuts days far off target: 24.2% vs 38.4%, P = 0.029 | The trial did not use the per-patient quadratic: its calibration "could therefore not be applied", so a proportional day-to-day rule was used. The gain is mostly less under-dosing. With the two-sided Wilcoxon test the legend names, P = 0.059; 0.029 matches a Welch t-test. One listed secondary outcome has no reported result | `dosing/khong2025_rct_check.ipynb` |
+| Khong 2025, tacrolimus after liver transplant, randomized (n = 56) | CURATE.AI-group dosing ("PPM") cuts days far off target: 24.2% vs 38.4%, P = 0.029 | The trial used CURATE.AI's linear (proportional) variant, not the quadratic one the protocol planned (its calibration "could therefore not be applied"). The gain is mostly less under-dosing. With the two-sided Wilcoxon test the legend names, P = 0.059; 0.029 matches a Welch t-test. One listed secondary outcome has no reported result | `dosing/khong2025_rct_check.ipynb` |
 
 Other CURATE.AI studies (hypertension/diabetes, chemotherapy, Waldenström, warfarin, paediatric tacrolimus) are being checked next; see `docs/sources.md`.
 
