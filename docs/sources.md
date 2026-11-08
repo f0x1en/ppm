@@ -23,3 +23,9 @@ ranks all 3^12 = 531,441 combinations by predicted cell kill.
 
 Search: PubMed + Europe PMC via pubmed-search MCP, 2026-11-08.
 Every QPOP paper above comes from the same research group; no independent replication was found.
+
+Replication search, 2026-11-09 (PubMed, Europe PMC, OpenAlex; query `"Optim.AI" OR "KYAN Technologies" OR "quadratic phenotypic optimization"`):
+the platform is now sold as Optim.AI by KYAN Technologies (Rashid, a QPOP author, is listed with a KYAN affiliation in Sahib 2024).
+All further hits are from the same authors (Rashid, Lim, Chan, Chow), and most are conference abstracts, for example
+Cancer Res 2025 abstract 7214 ("real-world concordance", doi 10.1158/1538-7445.am2025-7214) and Cancer Res 2026 abstract 2517 (doi 10.1158/1538-7445.am2026-2517).
+Conference abstracts are not peer-reviewed full papers and give too little detail to check.
