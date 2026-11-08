@@ -219,8 +219,9 @@ def test_real_surfaces():
 MI = Path(__file__).parent.parent / "qpop" / "myeloma_independent_check.ipynb"
 
 
-def test_kropivsek_reproduces_published_logrank():
+def test_kropivsek_reproduces_published_logrank(monkeypatch):
     import os
+    monkeypatch.setenv("PPM_PERM_B", "200")
     space, cwd = {}, os.getcwd()
     os.chdir(MI.parent)
     try:
