@@ -8,9 +8,9 @@ ranks all 3^12 = 531,441 combinations by predicted cell kill.
 
 | Disease | Paper | Read | Usable numbers |
 |---|---|---|---|
-| Multiple myeloma | Rashid et al., Sci Transl Med 2018, PMID 30089632 | abstract | 114-drug pool; cell lines, mouse model, ex vivo patient samples. **No clinical outcome data.** |
-| NHL (lymphoma) | Goh et al., Sci Transl Med 2022, PMID 36260690 | abstract | 71 patients; reports for 67/75 samples; median 6 days; 17 off-label QPOP-guided, 5 complete responses |
-| NHL (lymphoma) | Lee et al., JCO Precis Oncol 2025, PMID 40700670 | abstract | 117 recruited, 126 cases, 105 evaluable; accuracy 74.5%; ORR 59% on QPOP-guided off-label therapy |
+| Multiple myeloma | Rashid et al., Sci Transl Med 2018, PMID 30089632 | full text + supplements (see `docs/mm2018_notes.md`) | 114-drug pool; cell lines, mouse model, ex vivo patient samples. **No clinical outcome data.** |
+| NHL (lymphoma) | Goh et al., Sci Transl Med 2022, PMID 36260690 | files in papers/, not yet read | 71 patients; reports for 67/75 samples; median 6 days; 17 off-label QPOP-guided, 5 complete responses |
+| NHL (lymphoma) | Lee et al., JCO Precis Oncol 2025, PMID 40700670 | full text + data supplement | 126 cases, 105 evaluable; accuracy 74.5% on 47 cases (TP 18, FP 8, TN 17, FN 4); AUROC 0.69; ORR 16/27 on QPOP-guided therapy; allocation nonrandomized |
 | AML | Sahib et al., Cancer Med 2024, PMID 39560206, PMC11574777 | full text (methods, results, discussion) | 63 samples → 59 runs → 55 evaluable → 38 → 29 used; TP 15, FN 3, TN 10, FP 1; cutoff 0.65 NCV chosen by ROC; AUC 0.808 |
 | Soft tissue sarcoma | Chan et al., NPJ Precis Oncol 2025, PMID 40121334, PMC11929909 | abstract | 45 samples; "improved or concordant outcomes" (counts not yet read) |
 | HCC | Lim et al., J Exp Clin Cancer Res 2022, PMID 35971164, PMC9377092 | title only | bortezomib + CDK inhibitor, patient-derived models |
