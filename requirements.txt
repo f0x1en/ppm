@@ -2,3 +2,5 @@ numpy
 plotly
 jupyterlab
 pytest
+pandas
+openpyxl

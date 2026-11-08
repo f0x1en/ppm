@@ -175,3 +175,22 @@ def test_lab_concentrations_vs_cmax(ev):
     assert sorted(d for d, v in ev["aml_ratio"].items() if v > 0.10) == [
         "azacytidine", "bortezomib", "dasatinib", "gilteritinib", "midostaurin"]
     assert ev["mm_ratio"]["decitabine"] > 90 and ev["mm_ratio"]["bortezomib"] < 0.01
+
+
+OA = Path(__file__).parent.parent / "qpop" / "open_aml_check.ipynb"
+MALANI = Path(__file__).parent.parent / "ext" / "malani2022"
+
+
+@pytest.mark.skipif(not MALANI.exists(), reason="run scripts/fetch_open_data.sh first")
+def test_open_aml_cohort():
+    import os
+    space, cwd = {}, os.getcwd()
+    os.chdir(OA.parent)
+    try:
+        for cell in json.loads(OA.read_text())["cells"]:
+            if cell["cell_type"] == "code":
+                exec("".join(cell["source"]), space)
+    finally:
+        os.chdir(cwd)
+    assert len(space["Y"]) == 42 and space["Y"].sum() == 34
+    assert space["AUC"]["Age at diagnosis"][0] > space["AUC"]["Cyt + Ida mean"][0]
