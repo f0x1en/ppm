@@ -19,7 +19,7 @@ This repo re-checks both with the papers' own published numbers, open datasets f
 | Khong 2025, tacrolimus after liver transplant, randomized (n = 56) | Days far off target 24.2% vs 38.4%, P = 0.029 | Used CURATE.AI's linear (proportional) variant, not the quadratic the protocol planned. Gain is mostly less under-dosing. With the two-sided Wilcoxon test the legend names, P = 0.059; 0.029 matches a Welch t-test. One listed secondary outcome has no reported result | `dosing/khong2025_rct_check.ipynb` |
 | Sumner 2026, hypertension and type 2 diabetes (n = 18) | Feasible in outpatient care | Only 3 of 18 reached the dosing phase; usable recommendations for 2 people; recommendations changed with the data source; no outcome comparison | `docs/curate_notes.md` |
 | Blasiak 2025, chemotherapy, solid tumours (n = 10) | Feasible | 3 of 10 reached the dosing phase; doses boxed into 50-100% of standard; no outcome comparison | `docs/curate_notes.md` |
-| Blasiak 2024, Waldenström macroglobulinemia (n = 1) | Supports efficacy and engagement | One patient, no comparator; IgM noisy within cycles | `docs/curate_notes.md` |
+| Blasiak 2024, Waldenström macroglobulinemia (n = 1) | "Potential" for engagement and clinical efficacy | One patient, no comparator; IgM noisy within cycles | `docs/curate_notes.md` |
 | Gan 2025, warfarin, retrospective (n = 127) | Better prediction than other models | CURATE.AI's linear variant predicted slightly better than its quadratic; no head-to-head on the same data; modelled time in range not different from physicians | `docs/curate_notes.md` |
 | Single-patient simulation | A 3-point quadratic finds the best dose | Works with low noise and a bowl-shaped truth; fails when the true curve is not a bowl | `sim/curate_sim.ipynb` |
 
