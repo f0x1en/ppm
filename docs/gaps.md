@@ -11,5 +11,5 @@ Each row: what is missing, why it matters, and how to get it.
 | 5 | Lee 2025 (lymphoma) | RESOLVED: accuracy is on 47 cases, 2x2 = TP 18, FP 8, TN 17, FN 4 | - | - |
 | 6 | Pang 2025 letter + reply | Full text | The only published outside critique of QPOP | paywalled; ask authors or a library |
 | 7 | Sahib 2024 (AML) | Tables S2, S3 (drug panel, concentrations); which samples were used to tune doses | Possible overlap between dose-tuning and evaluation samples | open access; fetch supplements |
-| 8 | Lee 2025 (lymphoma) | Per-patient PFS before and after QPOP; data supplement not yet read | Mean PFS ratio 3.02 vs 1.21 may be outlier-driven, as in Goh 2022 | read `papers/ds_po-24-00780.txt` |
+| 8 | Goh 2022 / Lee 2025 (lymphoma) | Why patient 3834-FB previous PFS changed 284 to 37 days; which 2 of 29 were excluded; how 105 cases became 47 | Changes the "improved" count; tests cutoff tuning | email (draft: `papers/emails/jeyasekharan_nhl.md`) |
 | 9 | All | Independent replication | Every QPOP paper comes from one group | none found; search again later |

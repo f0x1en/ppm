@@ -99,3 +99,9 @@ def test_goh2022_pairs_and_fig_s2(ev):
     assert ev["n_up"] == 10                       # paper: "10 of 17 patients (59%)"
     assert round(5 * 7 / (10 * 11), 2) == 0.32    # Fig S2 OR
     assert abs(ev["fisher_two_sided"](5, 10, 11, 7) - 0.166) < 0.005
+
+
+def test_lee2025_pfs_table(ev):
+    assert len(ev["L25"]) == 29
+    assert int((ev["R25"] > 1.3).sum()) == 16      # 16/27 = 59.3% as reported
+    assert ev["L25"]["3834-FB"] == (37, 49)
