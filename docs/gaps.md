@@ -13,5 +13,5 @@ Each row: what is missing, why it matters, and how to get it.
 | 7 | Sahib 2024 (AML) | Which of the first 22 samples (used to tune doses) are among the 29 scored; full 2x2 for all 38 runs (Fig S3 gives AUC 0.719 only) | Overlap would mean the doses were tuned on test patients | email Chow (AML co-corresponding author); Tables S2-S3 now read |
 | 8 | Goh 2022 / Lee 2025 (lymphoma) | Why patient 3834-FB previous PFS changed 284 to 37 days; which 2 of 29 were excluded; how 105 cases became 47 | Changes the "improved" count; tests cutoff tuning | email (draft: `papers/emails/jeyasekharan_nhl.md`) |
 | 9 | All | Independent replication | Every QPOP paper and abstract comes from one group (see `docs/sources.md`) | none found 2026-11-09; search again later |
-| 10 | Chan 2025 (sarcoma) | Concordance counts | 45 samples; not yet analysed | open access (PMC11929909); Europe PMC API returned 500 on 2026-11-09, retry |
+| 10 | Chan 2025 (sarcoma) | RESOLVED: counts from the publisher's open HTML; 2x2 rebuilt | - | `qpop/qpop_evidence.ipynb` section 8 |
 | 11 | Kropivsek 2023 (myeloma, independent group) | RESOLVED: Supplementary Table 8 + Fig 8b source data downloaded from the publisher's supplement server (CC BY) | - | `qpop/myeloma_independent_check.ipynb` |
