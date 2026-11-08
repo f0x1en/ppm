@@ -35,3 +35,31 @@ def test_myeloma_optimum_is_interior(ns):
 
 def test_quadratic_struggles_on_s_curve(ns):
     assert ns["success_mm"][0] < 0.5 < ns["success2"][0]
+
+
+EV = Path(__file__).parent.parent / "qpop" / "qpop_evidence.ipynb"
+
+
+@pytest.fixture(scope="module")
+def ev():
+    space = {}
+    for cell in json.loads(EV.read_text())["cells"]:
+        if cell["cell_type"] == "code":
+            exec("".join(cell["source"]), space)
+    return space
+
+
+def test_aml_counts_match_paper(ev):
+    assert ev["N_AML"] == 29
+    assert round((ev["TP"] + ev["TN"]) / ev["N_AML"], 3) == 0.862
+    assert round(ev["TP"] / (ev["TP"] + ev["FN"]), 3) == 0.833
+    assert round(ev["TN"] / (ev["TN"] + ev["FP"]), 3) == 0.909
+
+
+def test_wilson_known_value(ev):
+    lo, hi = ev["wilson"](5, 10)
+    assert abs(lo - 0.2366) < 1e-3 and abs(hi - 0.7634) < 1e-3
+
+
+def test_tuned_cutoff_is_optimistic(ev):
+    assert (ev["REP"] > ev["TRUE"]).all()
