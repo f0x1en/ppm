@@ -232,3 +232,22 @@ def test_kropivsek_reproduces_published_logrank():
     assert len(space["m"]) == 34
     assert abs(space["lr_p"](space["m"], space["m"].sens) - 0.00763) < 5e-5   # Fig. 8d
     assert space["COX"]["['transplant']"][0] < 0.5
+
+
+KH = Path(__file__).parent.parent / "dosing" / "khong2025_rct_check.ipynb"
+
+
+def test_khong_primary_p_values():
+    import os
+    space, cwd = {}, os.getcwd()
+    os.chdir(KH.parent)
+    try:
+        for cell in json.loads(KH.read_text())["cells"]:
+            if cell["cell_type"] == "code":
+                exec("".join(cell["source"]), space)
+    finally:
+        os.chdir(cwd)
+    p = space["PRIMARY"]
+    assert abs(p["two-sided Wilcoxon rank-sum (stated in legend)"] - 0.059) < 0.002
+    assert abs(p["Welch t-test"] - 0.029) < 0.001
+    assert abs(space["ROWS"]["avg daily deviation below range"][5] - 0.0096) < 0.0005
