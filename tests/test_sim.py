@@ -92,3 +92,10 @@ def test_refit_differs_from_paper(mm):
 def test_leave_one_out_worse_than_mean(mm):
     err = [p - o for _, _, _, p, o, _ in mm["loo"]]
     assert (sum(e * e for e in err) / 9) ** 0.5 > mm["OUT"].std(ddof=1)
+
+
+def test_goh2022_pairs_and_fig_s2(ev):
+    assert len(ev["PFS_PREV"]) == len(ev["PFS_QPOP"]) == 17
+    assert ev["n_up"] == 10                       # paper: "10 of 17 patients (59%)"
+    assert round(5 * 7 / (10 * 11), 2) == 0.32    # Fig S2 OR
+    assert abs(ev["fisher_two_sided"](5, 10, 11, 7) - 0.166) < 0.005
