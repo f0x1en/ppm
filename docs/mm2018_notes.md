@@ -51,15 +51,15 @@ Ex vivo concentrations (Table S12, µM, levels −1/0/1): Dec 0/30/60, Bort 0/0.
 
 Design (S15): 9 combinations of MitoC (0-2 mg/kg) and Dec (0-1.5 mg/kg). Output (S16) = survival (days) + body-weight change (g).
 
-1. **Output column arithmetic is wrong in 4 of 9 rows.** Survival + weight change vs reported output:
-   combo 2: 18.94 vs 18.4; combo 4: 26.43 vs 27.3; combo 7: 27.42 vs 26.7; combo 9 (centre point, the best one): 35.67 vs 38.4.
+1. **Output column arithmetic is wrong in 5 of 9 rows (4 by more than 0.5).** Survival + weight change vs reported output:
+   combo 2: 18.94 vs 18.4; combo 4: 26.43 vs 27.3; combo 7: 27.42 vs 26.7; combo 8: 26.65 vs 26.5; combo 9 (centre point, the best one): 35.67 vs 38.4.
 2. **The published model (S18) is not reproducible from the published outputs.**
    Least-squares fit of the full quadratic to S16 outputs: coefficients [16.54, 20.47, 0.22, 0.67, −9.08, 0.93], R² 0.537.
    Paper: [14.9, 15.2, 10.0, 2.00, −6.41, −4.29], R² 0.680. Survival-only fit: [14.95, 16.61, 6.31, 1.53, −7.09, −2.29], R² 0.720, closer but not equal.
    The paper's model evaluated at its own 9 points: combo 6 predicts 30.6 vs 21.1 reported; combo 9 predicts 30.3 vs 38.4.
 3. **The fit has no predictive value.** 6 coefficients on 9 points leaves 3 degrees of freedom. Leave-one-out:
    the optimum moves from (MitoC 0.53, Dec 0) to (MitoC 2.0, Dec 0.8) depending on which group is dropped;
-   held-out predictions miss by up to 30 days (drop combo 4: predicted −2.7, observed 27.3).
+   held-out predictions miss by up to 30 days (drop combo 4: predicted −2.7, observed 27.3). Leave-one-out RMSE 15.7 days vs output SD 6.6 days: worse than predicting the mean.
 4. **The optimum is on the edge.** Every fit puts Dec at or near 1.5 mg/kg, the highest dose tested, so the true optimum may lie outside the tested range.
 5. **Table errors.** S18 title says "four drugs at five levels"; the model has two drugs. S17 has a rank written "x14".
 6. **Raw survival data (S19, Fig 5B) do not match S16 survival means.** S19 records fewer than 4 deaths per group (DMSO: 1 death, day 15), and means of recorded death days differ from S16 (centre point: 29.75 vs 35.3).

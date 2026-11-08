@@ -63,3 +63,32 @@ def test_wilson_known_value(ev):
 
 def test_tuned_cutoff_is_optimistic(ev):
     assert (ev["REP"] > ev["TRUE"]).all()
+
+
+MM = Path(__file__).parent.parent / "qpop" / "mm_invivo_refit.ipynb"
+
+
+@pytest.fixture(scope="module")
+def mm():
+    space = {}
+    for cell in json.loads(MM.read_text())["cells"]:
+        if cell["cell_type"] == "code":
+            exec("".join(cell["source"]), space)
+    return space
+
+
+def test_paper_model_reproduces_its_own_ranked_table(mm):
+    # Table S17: (MitoC 0, Dec 0) -> 15 days, (1.5, 1.5) -> 33 days
+    assert round(float(mm["X"](0.0, 0.0) @ mm["PAPER"])) == 15
+    assert round(float(mm["X"](1.5, 1.5) @ mm["PAPER"])) == 33
+
+
+def test_refit_differs_from_paper(mm):
+    b, r2 = mm["fit"](mm["OUT"])
+    assert abs(r2 - 0.680) > 0.1
+    assert abs(b[2] - mm["PAPER"][2]) > 5  # Dec coefficient
+
+
+def test_leave_one_out_worse_than_mean(mm):
+    err = [p - o for _, _, _, p, o, _ in mm["loo"]]
+    assert (sum(e * e for e in err) / 9) ** 0.5 > mm["OUT"].std(ddof=1)
