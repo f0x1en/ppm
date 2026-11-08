@@ -18,6 +18,7 @@ QPOP's design is sensible and its lab signal is real but modest; noise limits it
 | Lee 2025, lymphoma | 74.5% accuracy, 105 evaluable | Accuracy uses 47 of 126 cases; kappa 0.49, AUROC 0.69, 53% do-nothing baseline | `qpop/qpop_evidence.ipynb` |
 | Goh 2022 + Lee 2025, lymphoma | QPOP-guided therapy improves PFS | Paired per-patient PFS: median 81 vs 97 days (2022) and 105 vs 109 days (2025), sign tests p = 0.63 and 0.14; the PFS ratio tracks regression to the mean; one patient's prior PFS changed between papers (284 to 37 days) | `qpop/qpop_evidence.ipynb` |
 | All | - | One research group, no independent replication found, no randomized comparison | `docs/sources.md` |
+| QPOP's foundation, on 192 measured surfaces (DECREASE open data) | Drug-combination response is a smooth quadratic surface | Median R² 0.90 even with all 64 points; from QPOP-style 3x3 points the quadratic predicts unmeasured combinations worse than the plain Bliss baseline (median RMSE 0.106 vs 0.074), and depends strongly on the dose levels chosen | `qpop/real_surfaces_check.ipynb` |
 | Shared premise, on independent open data (Malani 2022, FIMM, CC BY) | Lab sensitivity of a patient's cells predicts clinical response | 42 AML patients on intensive induction: lab sensitivity to their induction drugs gives AUC 0.44-0.67 (intervals include 0.5); age alone gives 0.74, genetic risk class 0.70 | `qpop/open_aml_check.ipynb` |
 | Method itself (simulation on the real 155-run design) | Quadratic over 155 runs finds the best combination | Fair in principle: with low noise the true best doublet is in the top 3 most of the time, and drug-drug terms clearly help when synergy exists. At plausible assay noise the top-3 hit rate falls to about 40-75%. Truth model is made up | `qpop/qpop_design_stress.ipynb` |
 
@@ -40,7 +41,7 @@ The Science Translational Medicine papers are not included because the publisher
 
 ```
 uv venv && uv pip install -r requirements.txt
-sh scripts/fetch_open_data.sh        # open datasets into ext/ (needed for open_aml_check)
+sh scripts/fetch_open_data.sh        # open datasets into ext/ (needed for open_aml_check, real_surfaces_check)
 .venv/bin/python -m pytest -q tests
 .venv/bin/jupyter lab
 ```

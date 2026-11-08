@@ -194,3 +194,23 @@ def test_open_aml_cohort():
         os.chdir(cwd)
     assert len(space["Y"]) == 42 and space["Y"].sum() == 34
     assert space["AUC"]["Age at diagnosis"][0] > space["AUC"]["Cyt + Ida mean"][0]
+
+
+RS = Path(__file__).parent.parent / "qpop" / "real_surfaces_check.ipynb"
+DEC = Path(__file__).parent.parent / "ext" / "decrease"
+
+
+@pytest.mark.skipif(not DEC.exists(), reason="run scripts/fetch_open_data.sh first")
+def test_real_surfaces():
+    import os
+    space, cwd = {}, os.getcwd()
+    os.chdir(RS.parent)
+    try:
+        for cell in json.loads(RS.read_text())["cells"]:
+            if cell["cell_type"] == "code":
+                exec("".join(cell["source"]), space)
+    finally:
+        os.chdir(cwd)
+    res = space["RES"]
+    assert len(res) == 192
+    assert res.rmse_bliss.median() < res.rmse_quad9.median()
