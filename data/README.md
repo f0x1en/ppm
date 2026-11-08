@@ -15,5 +15,6 @@ File names: `<first author><year>_<disease>_<what>_<source table>.csv`.
 | `lee2025_lymphoma_tableS2_pfs.csv` | same | Data Supplement Table S2 |
 | `goh2022_lymphoma_tableS7_pfs.csv` | Goh et al., Sci Transl Med 2022, doi 10.1126/scitranslmed.abn7824 | Supplement Table S7 |
 | `goh2022_lymphoma_figS2_pd_6mo.csv` | same | Supplement Fig S2 (progressive disease at 6 months, ≥2 prior lines) |
+| `goh2022_lymphoma_tableS8_oacd_design.csv` | same | Supplement Table S8 (155-run, 12-drug, 3-level design; 0 none, 1 low, 2 high) |
 
 `tests/test_sim.py` checks that the notebooks use exactly these numbers.

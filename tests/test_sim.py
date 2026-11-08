@@ -135,3 +135,32 @@ def test_data_files_match_evidence_notebook(ev):
     assert (aml["TP"], aml["FN"], aml["TN"], aml["FP"]) == (ev["TP"], ev["FN"], ev["TN"], ev["FP"])
     nhl = {r["quantity"]: float(r["value"]) for r in _csv("lee2025_lymphoma_concordance.csv")}
     assert {k: nhl[k] for k in ("TP", "FP", "TN", "FN")} == ev["NHL"]
+
+
+ST = Path(__file__).parent.parent / "qpop" / "qpop_design_stress.ipynb"
+
+
+@pytest.fixture(scope="module")
+def st():
+    import os
+    space, cwd = {}, os.getcwd()
+    os.chdir(ST.parent)
+    try:
+        for cell in json.loads(ST.read_text())["cells"]:
+            if cell["cell_type"] == "code":
+                exec("".join(cell["source"]), space)
+    finally:
+        os.chdir(cwd)
+    return space
+
+
+def test_design_matches_paper(st):
+    assert st["DESIGN"].shape == (155, 12)
+    assert len(st["DOUBLETS"]) == 66 * 4
+
+
+def test_quadratic_beats_random_and_uses_interactions(st):
+    res = st["RES"]
+    assert (res[:, 0, 0, 1] > 0.7).all()                       # no noise: top-3 hit rate
+    assert res[..., 2, 1].mean() < 0.03                        # random pick
+    assert (res[-1, :, 0, 1] > res[-1, :, 1, 1]).all()         # strong synergy: quadratic beats no-interaction

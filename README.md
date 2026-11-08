@@ -6,7 +6,7 @@ This repo re-checks those claims using only what the papers themselves publish: 
 
 ## Verdict
 
-QPOP's lab signal is real but modest, and the published numbers overstate it. The clinical benefit claims and the myeloma dose optimization are not supported by the papers' own data.
+QPOP's design is sensible and its lab signal is real but modest; noise limits it, and the published numbers overstate it. The clinical benefit claims and the myeloma dose optimization are not supported by the papers' own data.
 
 ## Findings
 
@@ -18,6 +18,7 @@ QPOP's lab signal is real but modest, and the published numbers overstate it. Th
 | Lee 2025, lymphoma | 74.5% accuracy, 105 evaluable | Accuracy uses 47 of 126 cases; kappa 0.49, AUROC 0.69, 53% do-nothing baseline | `qpop/qpop_evidence.ipynb` |
 | Goh 2022 + Lee 2025, lymphoma | QPOP-guided therapy improves PFS | Paired per-patient PFS: median 81 vs 97 days (2022) and 105 vs 109 days (2025), sign tests p = 0.63 and 0.14; the PFS ratio tracks regression to the mean; one patient's prior PFS changed between papers (284 to 37 days) | `qpop/qpop_evidence.ipynb` |
 | All | - | One research group, no independent replication found, no randomized comparison | `docs/sources.md` |
+| Method itself (simulation on the real 155-run design) | Quadratic over 155 runs finds the best combination | Fair in principle: with low noise the true best doublet is in the top 3 most of the time, and drug-drug terms clearly help when synergy exists. At plausible assay noise the top-3 hit rate falls to about 40-75%. Truth model is made up | `qpop/qpop_design_stress.ipynb` |
 
 Open questions and the data still missing are in `docs/gaps.md`.
 
