@@ -1,20 +1,27 @@
-# Checking the evidence for QPOP
+# Personalized dosing: what the published evidence actually supports
 
-QPOP (quadratic phenotypic optimization platform, National University of Singapore) tests drug combinations on a patient's tumour cells in the lab, fits a quadratic surface, and ranks every possible combination. Its papers report high accuracy in blood cancers and an optimized drug pair for multiple myeloma.
+Two ideas from the National University of Singapore are often presented together as "AI-driven personalized medicine":
 
-This repo re-checks those claims using only what the papers themselves publish: main text, supplementary tables and raw data. Where data is missing, simulations fill the gap and are labelled as simulated.
+- **How much: CURATE.AI.** Fit a small curve (linear or quadratic) to *one* patient's own dose and response data, recommend that patient's next dose, refit as new data arrive.
+- **Which drugs: QPOP.** Test drug combinations on the patient's tumour cells in the lab, fit a quadratic surface, rank the combinations.
+
+This repo re-checks both with the papers' own published numbers, open datasets from independent groups, and clearly labelled simulations. Nothing here is the author's own clinical research; it is a critical reading of other people's work, built to be reproducible.
 
 ## Verdict
 
-QPOP's design is sensible and its lab signal is real but modest; noise limits it, and the published numbers overstate it. Independent open data give mixed support for the shared premise (lab response predicts clinical response): positive but small in myeloma (34 patients), not shown for single induction drugs in AML (42 patients). The clinical benefit claims and the myeloma dose optimization are not supported by the papers' own data.
+- **Per-patient feedback dosing is sound, but the evidence is for the simple version.** The one randomized trial supports CURATE.AI's linear (proportional) variant for tacrolimus, mainly by avoiding under-dosing, and even that result is weaker than reported (P = 0.059 with the test the paper names). The quadratic variant has never been shown to beat simpler rules or usual care, and most patients never collect enough data to calibrate it.
+- **Lab testing of a patient's cells has real but modest predictive value** in independent work (myeloma, 34 patients). QPOP's own papers overstate it every time: tuned cutoffs, selected samples, weak baselines, and a myeloma dose "optimization" that its own data do not support.
 
-## Dose optimization (main thread): CURATE.AI-style per-patient dosing
+## Dose optimization (main thread): CURATE.AI
 
-| Study | Claim | What the published data show | Notebook |
+| Study | Claim | What the published data show | Where |
 |---|---|---|---|
-| Khong 2025, tacrolimus after liver transplant, randomized (n = 56) | CURATE.AI-group dosing ("PPM") cuts days far off target: 24.2% vs 38.4%, P = 0.029 | The trial used CURATE.AI's linear (proportional) variant, not the quadratic one the protocol planned (its calibration "could therefore not be applied"). The gain is mostly less under-dosing. With the two-sided Wilcoxon test the legend names, P = 0.059; 0.029 matches a Welch t-test. One listed secondary outcome has no reported result | `dosing/khong2025_rct_check.ipynb` |
-
-Other CURATE.AI studies (hypertension/diabetes, chemotherapy, Waldenström, warfarin, paediatric tacrolimus) are being checked next; see `docs/sources.md`.
+| Khong 2025, tacrolimus after liver transplant, randomized (n = 56) | Days far off target 24.2% vs 38.4%, P = 0.029 | Used CURATE.AI's linear (proportional) variant, not the quadratic the protocol planned. Gain is mostly less under-dosing. With the two-sided Wilcoxon test the legend names, P = 0.059; 0.029 matches a Welch t-test. One listed secondary outcome has no reported result | `dosing/khong2025_rct_check.ipynb` |
+| Sumner 2026, hypertension and type 2 diabetes (n = 18) | Feasible in outpatient care | Only 3 of 18 reached the dosing phase; usable recommendations for 2 people; recommendations changed with the data source; no outcome comparison | `docs/curate_notes.md` |
+| Blasiak 2025, chemotherapy, solid tumours (n = 10) | Feasible | 3 of 10 reached the dosing phase; doses boxed into 50-100% of standard; no outcome comparison | `docs/curate_notes.md` |
+| Blasiak 2024, Waldenström macroglobulinemia (n = 1) | Supports efficacy and engagement | One patient, no comparator; IgM noisy within cycles | `docs/curate_notes.md` |
+| Gan 2025, warfarin, retrospective (n = 127) | Better prediction than other models | CURATE.AI's linear variant predicted slightly better than its quadratic; no head-to-head on the same data; modelled time in range not different from physicians | `docs/curate_notes.md` |
+| Single-patient simulation | A 3-point quadratic finds the best dose | Works with low noise and a bowl-shaped truth; fails when the true curve is not a bowl | `sim/curate_sim.ipynb` |
 
 ## Drug selection (supporting section): QPOP
 
@@ -37,11 +44,13 @@ Open questions and the data still missing are in `docs/gaps.md`.
 
 ## Files
 
-- `qpop/` re-analysis notebooks with interactive plots (3D surfaces rotate; sliders switch views).
+- `dosing/` re-analysis of the CURATE.AI randomized trial (per-patient source data).
+- `qpop/` QPOP re-analysis notebooks with interactive plots (3D surfaces rotate; sliders switch views).
+- `docs/curate_notes.md` notes on the five CURATE.AI dosing studies.
 - `docs/sources.md` every paper used, and how much of it was read.
 - `docs/mm2018_notes.md` page-referenced notes on the myeloma paper.
 - `docs/gaps.md` what cannot be checked yet, and how to get it.
-- `sim/curate_sim.ipynb` earlier background work: single-patient dose finding with a quadratic (CURATE.AI-style), simulated.
+- `sim/curate_sim.ipynb` simulation of single-patient quadratic dose finding, plus early case notes.
 - `data/` every published number used, one CSV per source table, with sources in `data/README.md`.
 - `articles/` papers whose license allows redistribution (currently Lee 2025, CC BY 4.0).
 - `tests/` checks that the notebooks still reproduce the published numbers and match `data/`.
