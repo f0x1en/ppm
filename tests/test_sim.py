@@ -105,3 +105,33 @@ def test_lee2025_pfs_table(ev):
     assert len(ev["L25"]) == 29
     assert int((ev["R25"] > 1.3).sum()) == 16      # 16/27 = 59.3% as reported
     assert ev["L25"]["3834-FB"] == (37, 49)
+
+
+DATA = Path(__file__).parent.parent / "data"
+
+
+def _csv(name):
+    import csv
+    with open(DATA / name) as f:
+        return list(csv.DictReader(f))
+
+
+def test_data_files_match_mouse_notebook(mm):
+    rows = _csv("rashid2018_myeloma_mouse_tableS15_S16.csv")
+    for key, col in [("MITO", "mitoc_mg_kg"), ("DEC", "dec_mg_kg"), ("SURV", "survival_days_mean"),
+                     ("WT", "weight_change_g_mean"), ("OUT", "reported_output")]:
+        assert [float(r[col]) for r in rows] == list(mm[key])
+    model = [float(r["estimate"]) for r in _csv("rashid2018_myeloma_mouse_tableS18_model.csv")][:6]
+    assert model == list(mm["PAPER"])
+
+
+def test_data_files_match_evidence_notebook(ev):
+    g22 = _csv("goh2022_lymphoma_tableS7_pfs.csv")
+    assert [int(r["pfs_prev_days"]) for r in g22] == list(ev["PFS_PREV"])
+    assert [int(r["pfs_qpop_days"]) for r in g22] == list(ev["PFS_QPOP"])
+    assert {r["patient_id"]: (int(r["pfs_prev_days"]), int(r["pfs_qpop_days"]))
+            for r in _csv("lee2025_lymphoma_tableS2_pfs.csv")} == ev["L25"]
+    aml = {r["quantity"]: float(r["value"]) for r in _csv("sahib2024_aml_concordance.csv")}
+    assert (aml["TP"], aml["FN"], aml["TN"], aml["FP"]) == (ev["TP"], ev["FN"], ev["TN"], ev["FP"])
+    nhl = {r["quantity"]: float(r["value"]) for r in _csv("lee2025_lymphoma_concordance.csv")}
+    assert {k: nhl[k] for k in ("TP", "FP", "TN", "FN")} == ev["NHL"]

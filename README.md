@@ -28,9 +28,11 @@ Open questions and the data still missing are in `docs/gaps.md`.
 - `docs/mm2018_notes.md` page-referenced notes on the myeloma paper.
 - `docs/gaps.md` what cannot be checked yet, and how to get it.
 - `sim/curate_sim.ipynb` earlier background work: single-patient dose finding with a quadratic (CURATE.AI-style), simulated.
-- `tests/` checks that the notebooks still reproduce the published numbers.
+- `data/` every published number used, one CSV per source table, with sources in `data/README.md`.
+- `articles/` papers whose license allows redistribution (currently Lee 2025, CC BY 4.0).
+- `tests/` checks that the notebooks still reproduce the published numbers and match `data/`.
 
-Paper PDFs are not included (copyright). Get them through the DOIs in `docs/sources.md`.
+The Science Translational Medicine papers are not included because the publisher holds the rights. Get them through the DOIs in `docs/sources.md`.
 
 ## Run
 

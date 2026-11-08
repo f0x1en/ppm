@@ -1,0 +1,11 @@
+quantity,value
+qpop_cases,126
+evaluable,105
+concordance_set,47
+TP,18
+FP,8
+TN,17
+FN,4
+auroc,0.6896
+qpop_guided_evaluable,27
+orr_responders,16

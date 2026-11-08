@@ -1,0 +1,12 @@
+quantity,value
+samples_collected,63
+qpop_runs,59
+passed_quality_check,55
+evaluated_vs_outcome,38
+headline_set,29
+TP,15
+FN,3
+TN,10
+FP,1
+ncv_cutoff,0.65
+auc,0.808

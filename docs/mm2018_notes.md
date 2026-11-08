@@ -43,7 +43,7 @@ PubMed + Europe PMC + ClinicalTrials.gov (2026-11-09): no clinical study of deci
 
 ## Supplements (read 2026-11-09)
 
-Files: `aan0941_sm.pdf`, Table S19 (xlsx, 6 sheets = raw data for Figs 1-6), data file S1 (docx with MATLAB code).
+Files (local `papers/`, not in repo): `rashid2018_myeloma_stm_supplement.pdf`, Table S19 (xlsx, 6 sheets = raw data for Figs 1-6), data file S1 (docx with MATLAB code).
 
 Ex vivo concentrations (Table S12, µM, levels −1/0/1): Dec 0/30/60, Bort 0/0.001/0.002, MitoC 0/1/2, Pano 0/0.0014/0.0028, Melph 0/0.4/0.8, Dex 0/0.008/0.016.
 

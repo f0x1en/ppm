@@ -1,0 +1,8 @@
+term,estimate
+intercept,14.9
+mitoc,15.2
+dec,10.0
+mitoc:dec,2.0
+mitoc^2,-6.41
+dec^2,-4.29
+R2,0.68

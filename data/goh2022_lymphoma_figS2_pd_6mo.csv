@@ -1,0 +1,3 @@
+group,progressive_disease,no_progressive_disease
+qpop_guided,5,10
+clinician_guided,11,7
