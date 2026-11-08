@@ -6,7 +6,7 @@ This repo re-checks those claims using only what the papers themselves publish: 
 
 ## Verdict
 
-QPOP's design is sensible and its lab signal is real but modest; noise limits it, and the published numbers overstate it. The clinical benefit claims and the myeloma dose optimization are not supported by the papers' own data.
+QPOP's design is sensible and its lab signal is real but modest; noise limits it, and the published numbers overstate it. Independent open data give mixed support for the shared premise (lab response predicts clinical response): positive but small in myeloma (34 patients), not shown for single induction drugs in AML (42 patients). The clinical benefit claims and the myeloma dose optimization are not supported by the papers' own data.
 
 ## Findings
 
@@ -19,6 +19,7 @@ QPOP's design is sensible and its lab signal is real but modest; noise limits it
 | Goh 2022 + Lee 2025, lymphoma | QPOP-guided therapy improves PFS | Paired per-patient PFS: median 81 vs 97 days (2022) and 105 vs 109 days (2025), sign tests p = 0.63 and 0.14; the PFS ratio tracks regression to the mean; one patient's prior PFS changed between papers (284 to 37 days) | `qpop/qpop_evidence.ipynb` |
 | All | - | One research group, no independent replication found, no randomized comparison | `docs/sources.md` |
 | QPOP's foundation, on 192 measured surfaces (DECREASE open data) | Drug-combination response is a smooth quadratic surface | Median R² 0.90 even with all 64 points; from QPOP-style 3x3 points the quadratic predicts unmeasured combinations worse than the plain Bliss baseline (median RMSE 0.106 vs 0.074), and depends strongly on the dose levels chosen | `qpop/real_surfaces_check.ipynb` |
+| Shared premise, myeloma, independent group (Kropivsek 2023, Zurich, CC BY) | Lab sensitivity predicts time to next treatment | **Supported, small.** Published log-rank P = 0.00763 reproduces exactly; robust to cutoff, single patients, permutation (P = 0.009) and transplant stratification (HR 0.20, 0.06-0.74); 34 patients, 17 events, C-index of the raw score 0.64 | `qpop/myeloma_independent_check.ipynb` |
 | Shared premise, on independent open data (Malani 2022, FIMM, CC BY) | Lab sensitivity of a patient's cells predicts clinical response | 42 AML patients on intensive induction: lab sensitivity to their induction drugs gives AUC 0.44-0.67 (intervals include 0.5); age alone gives 0.74, genetic risk class 0.70 | `qpop/open_aml_check.ipynb` |
 | Method itself (simulation on the real 155-run design) | Quadratic over 155 runs finds the best combination | Fair in principle: with low noise the true best doublet is in the top 3 most of the time, and drug-drug terms clearly help when synergy exists. At plausible assay noise the top-3 hit rate falls to about 40-75%. Truth model is made up | `qpop/qpop_design_stress.ipynb` |
 

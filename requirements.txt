@@ -4,3 +4,4 @@ jupyterlab
 pytest
 pandas
 openpyxl
+lifelines

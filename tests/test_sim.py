@@ -214,3 +214,21 @@ def test_real_surfaces():
     res = space["RES"]
     assert len(res) == 192
     assert res.rmse_bliss.median() < res.rmse_quad9.median()
+
+
+MI = Path(__file__).parent.parent / "qpop" / "myeloma_independent_check.ipynb"
+
+
+def test_kropivsek_reproduces_published_logrank():
+    import os
+    space, cwd = {}, os.getcwd()
+    os.chdir(MI.parent)
+    try:
+        for cell in json.loads(MI.read_text())["cells"]:
+            if cell["cell_type"] == "code":
+                exec("".join(cell["source"]), space)
+    finally:
+        os.chdir(cwd)
+    assert len(space["m"]) == 34
+    assert abs(space["lr_p"](space["m"], space["m"].sens) - 0.00763) < 5e-5   # Fig. 8d
+    assert space["COX"]["['transplant']"][0] < 0.5

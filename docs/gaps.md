@@ -14,4 +14,4 @@ Each row: what is missing, why it matters, and how to get it.
 | 8 | Goh 2022 / Lee 2025 (lymphoma) | Why patient 3834-FB previous PFS changed 284 to 37 days; which 2 of 29 were excluded; how 105 cases became 47 | Changes the "improved" count; tests cutoff tuning | email (draft: `papers/emails/jeyasekharan_nhl.md`) |
 | 9 | All | Independent replication | Every QPOP paper and abstract comes from one group (see `docs/sources.md`) | none found 2026-11-09; search again later |
 | 10 | Chan 2025 (sarcoma) | Concordance counts | 45 samples; not yet analysed | open access (PMC11929909); Europe PMC API returned 500 on 2026-11-09, retry |
-| 11 | Kropivsek 2023 (myeloma, independent group) | Patient-level Fig 8 data (iPCY score, time to next treatment) | Re-check the HR 4.57 with an honest baseline and leave-one-out cutoff | CC BY; Europe PMC supplementary API returned "Connection refused" on 2026-11-09, retry |
+| 11 | Kropivsek 2023 (myeloma, independent group) | RESOLVED: Supplementary Table 8 + Fig 8b source data downloaded from the publisher's supplement server (CC BY) | - | `qpop/myeloma_independent_check.ipynb` |

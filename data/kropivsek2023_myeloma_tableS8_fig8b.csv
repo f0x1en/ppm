@@ -1,0 +1,35 @@
+SampleID,immunotherapy_cohort,therapy,therapy_name,time_to_next_treatment_or_death_days,censored,ipcy,cohort
+MM017,False,ILD,"ixazomib, lenalidomide, dexamethasone",109,0,0.39861090400632526,Non-immunotherapy
+MM026,False,VCD,"bortezomib, cyclophosphamide, dexamethasone",57,0,0.3295617308046647,Non-immunotherapy
+MM037,False,VCD/VRD/Mel,"bortezomib, cyclophosphamide, dexamethasone / bortezomib, lenalidomide, dezamethasone / melphalan",505,1,0.5133504241347552,Non-immunotherapy
+MM047,False,VCD/VRD/Mel/Len,"bortezomib, cyclophosphamide, dexamethasone / bortezomib, lenalidomide, dezamethasone / melphalan / lenalidomide",882,1,0.11952338604905835,Non-immunotherapy
+MM049,False,VCD/VRD/Mel/Vel,"bortezomib, cyclophosphamide, dexamethasone / bortezomib, lenalidomide, dezamethasone / melphalan / bortezomib",689,1,0.06786602310676501,Non-immunotherapy
+MM052,False,VCD/VRD/Mel,"bortezomib, cyclophosphamide, dexamethasone / bortezomib, lenalidomide, dezamethasone / melphalan",238,0,1.2618074343063648,Non-immunotherapy
+MM058,False,KRD,"carfilzomib, lenalidomide, dexamethasone",309,0,0.2466927410144344,Non-immunotherapy
+MM061,False,VMD,"bortezomib, melphalan, dexamethasone",142,0,-0.27719515970172887,Non-immunotherapy
+MM076,False,Len-Mono,lenalidomide,112,0,0.07335062712998786,Non-immunotherapy
+MM082,False,VCD/VRD/Mel,"bortezomib, cyclophosphamide, dexamethasone / bortezomib, lenalidomide, dezamethasone / melphalan",638,1,0.027538447708172382,Non-immunotherapy
+MM083,False,KRD/K,"carfilzomib, lenalidomide, dexamethasone / carfilzomib",407,0,0.3219310517891555,Non-immunotherapy
+MM084,False,VD,"bortezomib, dexamethasone",210,0,0.33217463597681385,Non-immunotherapy
+MM085,True,Dara-VD,"daratumumab, bortezomib, dexamethasone",349,0,0.6024657996652096,Immunotherapy
+MM091,True,Dara-Mono/Dara-RD,"daratumumab / daratumumab, lenalidomide, dezamethasone",126,0,0.031729180232604584,Immunotherapy
+MM092,True,Dara-RD,"daratumumab, lenalidomide, dexamethasone",259,0,0.04062383997032199,Immunotherapy
+MM095,True,Dara-VD,"daratumumab, bortezomib, dexamethasone",309,1,0.10705490340175734,Immunotherapy
+MM097,True,Dara-RD,"daratumumab, lenalidomide, dexamethasone",35,1,0.07992992935424591,Immunotherapy
+MM098,True,Dara-RD,"daratumumab, lenalidomide, dexamethasone",97,0,0.03441040893453263,Immunotherapy
+MM100,False,Car-Cyclophosphamide-Dex,"carfilzomib, cyclophosphamide, dexamethasone",209,0,0.2938468136911667,Non-immunotherapy
+MM102,True,Dara-Pom-Dex,"daratumumab, pomalidomide, dexamethasone",71,0,0.11554502291148505,Immunotherapy
+MM103,False,VCD/VRD/Mel,"bortezomib, cyclophosphamide, dexamethasone / bortezomib, lenalidomide, dezamethasone / melphalan",542,1,0.630289515810461,Non-immunotherapy
+MM106,True,Dara-Pom-Dex,"daratumumab, pomalidomide, dexamethasone",373,1,0.474746964978213,Immunotherapy
+MM107,True,Dara-RD/Dara-Car-Dex,"daratumumab, lenalidomide, dexamethasone / daratumumab, carfilzomib, dexamethasone / daratumumab, carfilzomib, dexamethasone",175,1,0.46152617675272034,Immunotherapy
+MM112,False,KRD,"carfilzomib, lenalidomide, dexamethasone",297,0,0.7119658128684557,Non-immunotherapy
+MM113,False,VCD/VRD/Mel/Vel,"bortezomib, cyclophosphamide, dexamethasone / bortezomib, lenalidomide, dezamethasone / melphalan / bortezomib",506,1,1.0642121758137997,Non-immunotherapy
+MM115,True,Elo-Pom-Dex,"elotuzumab, pomalidomide, dexamethasone",178,0,-0.2295645062482801,Immunotherapy
+MM116,True,Dara-VD/Dara-Car-Dex,"daratumumab, bortezomib, dexamethasone / daratumumab, carfilzomib, dexamethasone",497,1,0.3286824257808729,Immunotherapy
+MM118,False,VCD/VRD/Mel,"bortezomib, cyclophosphamide, dexamethasone / bortezomib, lenalidomide, dezamethasone / melphalan",416,1,0.849070322350816,Non-immunotherapy
+MM121,True,Dara-Mono,daratumumab,49,1,0.4617924923858,Immunotherapy
+MM123,True,Dara-RD,"daratumumab, lenalidomide, dexamethasone",483,1,0.38143389937569583,Immunotherapy
+MM127,False,KRD,"carfilzomib, lenalidomide, dexamethasone",363,1,0.4029901995145677,Non-immunotherapy
+MM133,False,VRD/Mel,"bortezomib, lenalidomide, dexamethasone / melphalan",291,1,0.2502390565961697,Non-immunotherapy
+MM137,True,Elo-Pom-Dex,"elotuzumab, pomalidomide, dexamethasone",248,0,0.12572847954078098,Immunotherapy
+MM138,True,Dara-RD,"daratumumab, lenalidomide, dexamethasone",280,1,0.2005463854692111,Immunotherapy
