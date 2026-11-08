@@ -42,10 +42,15 @@ EV = Path(__file__).parent.parent / "qpop" / "qpop_evidence.ipynb"
 
 @pytest.fixture(scope="module")
 def ev():
-    space = {}
-    for cell in json.loads(EV.read_text())["cells"]:
-        if cell["cell_type"] == "code":
-            exec("".join(cell["source"]), space)
+    import os
+    space, cwd = {}, os.getcwd()
+    os.chdir(EV.parent)
+    try:
+        for cell in json.loads(EV.read_text())["cells"]:
+            if cell["cell_type"] == "code":
+                exec("".join(cell["source"]), space)
+    finally:
+        os.chdir(cwd)
     return space
 
 
@@ -164,3 +169,9 @@ def test_quadratic_beats_random_and_uses_interactions(st):
     assert (res[:, 0, 0, 1] > 0.7).all()                       # no noise: top-3 hit rate
     assert res[..., 2, 1].mean() < 0.03                        # random pick
     assert (res[-1, :, 0, 1] > res[-1, :, 1, 1]).all()         # strong synergy: quadratic beats no-interaction
+
+
+def test_lab_concentrations_vs_cmax(ev):
+    assert sorted(d for d, v in ev["aml_ratio"].items() if v > 0.10) == [
+        "azacytidine", "bortezomib", "dasatinib", "gilteritinib", "midostaurin"]
+    assert ev["mm_ratio"]["decitabine"] > 90 and ev["mm_ratio"]["bortezomib"] < 0.01

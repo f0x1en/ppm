@@ -13,8 +13,8 @@ QPOP's design is sensible and its lab signal is real but modest; noise limits it
 | Paper | Claim | What the published data show | Notebook |
 |---|---|---|---|
 | Rashid 2018, myeloma (mice) | QPOP found the optimal Dec + MitoC dose | Output column wrong in 5 of 9 rows; published model cannot be rebuilt from published data; leave-one-out error (15.7 days) is over twice the spread of the data (6.6 days); optimum sits at the highest tested dose | `qpop/mm_invivo_refit.ipynb` |
-| Rashid 2018, myeloma (patients) | Dec + MitoC beats clinical regimens ex vivo | 4 patient samples, no outcomes; text contradicts its own Table 4; no clinical study since | `docs/mm2018_notes.md` |
-| Sahib 2024, AML | 86.2% accuracy | Real signal (kappa 0.72), but on 29 of 63 samples, against a 62% do-nothing baseline, with the cutoff tuned on the same patients (simulated optimism: 7-11 points) | `qpop/qpop_evidence.ipynb` |
+| Rashid 2018, myeloma (patients) | Dec + MitoC beats clinical regimens ex vivo | 4 patient samples, no outcomes; decitabine tested at 93-186x patient Cmax while bortezomib and panobinostat were at under 4% of theirs; text contradicts its own Table 4; no clinical study since | `docs/mm2018_notes.md` |
+| Sahib 2024, AML | 86.2% accuracy | Real signal (kappa 0.72), but on 29 of 63 samples, against a 62% do-nothing baseline, with the cutoff tuned on the same patients (simulated optimism: 7-11 points); on all 38 evaluated runs AUC is 0.72, not 0.81; five drugs at ~20% of Cmax despite a stated 10% limit | `qpop/qpop_evidence.ipynb` |
 | Lee 2025, lymphoma | 74.5% accuracy, 105 evaluable | Accuracy uses 47 of 126 cases; kappa 0.49, AUROC 0.69, 53% do-nothing baseline | `qpop/qpop_evidence.ipynb` |
 | Goh 2022 + Lee 2025, lymphoma | QPOP-guided therapy improves PFS | Paired per-patient PFS: median 81 vs 97 days (2022) and 105 vs 109 days (2025), sign tests p = 0.63 and 0.14; the PFS ratio tracks regression to the mean; one patient's prior PFS changed between papers (284 to 37 days) | `qpop/qpop_evidence.ipynb` |
 | All | - | One research group, no independent replication found, no randomized comparison | `docs/sources.md` |

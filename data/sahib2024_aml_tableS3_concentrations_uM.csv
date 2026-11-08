@@ -1,0 +1,13 @@
+drug,cmax_uM,median_ic50_blasts_uM,qpop_high_uM,qpop_low_uM
+fludarabine,3,0.695,0.174,0.087
+cytarabine,54.4,5.12,1.28,0.64
+daunorubicin,0.31,0.00246,0.000615,0.000308
+clofarabine,0.744,0.0263,0.0066,0.0033
+cyclophosphamide,128,0.112,0.028,0.014
+azacytidine,3.07,3.13,0.614,0.307
+venetoclax,4.48,0.000695,0.000174,8.7e-05
+panobinostat,0.082,0.00363,0.000908,0.000454
+midostaurin,2.63,2.97,0.656,0.292
+bortezomib,0.312,1.72,0.062,0.031
+dasatinib,0.264,17.5,0.053,0.026
+gilteritinib,0.155,1.64,0.031,0.016

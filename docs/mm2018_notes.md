@@ -35,7 +35,7 @@ Output: viability(THLE-2) minus viability(P100v) in vitro; mean survival time mi
 6. **Comparison stacked.** Dec/MitoC beat Bort/Dex/Melph and Bort/Dex/Lena in a model built to be bortezomib-resistant (P100v). Both comparators contain bortezomib.
 7. **Negative result.** In a Bort-resistant ALL mouse model, Dec/MitoC did not beat vehicle, single drugs, or clinical combinations (fig. S7, p. 13).
 8. **Ex vivo n = 4**, all newly diagnosed. Rankings differ per patient. No patient outcomes.
-9. **Doses to check.** Ex vivo Dec levels 30 and 60 (units in table S12, not yet read). Dec single-drug IC50 in patient 2 is 7530 µM (Table 1). Whether these concentrations are reachable in patients is not checked yet.
+9. **Ex vivo doses are not reachable in patients, and lopsided.** Table S12 (µM): Dec 30/60, Bort 0.001/0.002, Pano 0.0014/0.0028. With Cmax from Sahib 2024 Table S2 (Liston & Davis 2017): Dec 0.323, Bort 0.312, Pano 0.082 µM. So Dec ran at 93-186x Cmax; Bort at 0.3-0.6% and Pano at 2-3% of Cmax. Dec single-drug IC50 in patient 2 was 7530 µM (Table 1).
 
 ## Follow-up
 
