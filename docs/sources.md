@@ -24,6 +24,14 @@ ranks all 3^12 = 531,441 combinations by predicted cell kill.
 Search: PubMed + Europe PMC via pubmed-search MCP, 2026-11-08.
 Every QPOP paper above comes from the same research group; no independent replication was found.
 
+## Independent work used for comparison
+
+| Topic | Paper | Read | Usable numbers |
+|---|---|---|---|
+| AML, open data | Malani et al., Cancer Discov 2022, doi 10.1158/2159-8290.CD-21-0410; data Zenodo 10.5281/zenodo.7370747 (CC BY 4.0) | data files | 515-drug sDSS for 164 samples; clinical summary for 186 patients (`qpop/open_aml_check.ipynb`) |
+| Combination surfaces | Ianevski et al., Nat Mach Intell 2019 (DECREASE), doi 10.1038/s42256-019-0122-4; GitHub IanevskiAleksandr/DECREASE (GPL-3) | code + data | 192 measured 8x8 matrices (`qpop/real_surfaces_check.ipynb`) |
+| Myeloma, ex vivo vs clinic | Kropivsek et al., Nat Cancer 2023, doi 10.1038/s43018-023-00544-9, PMC10212768 (CC BY) | results + methods text | 34 patients tested before their next line: ex vivo "sensitive" (above subcohort mean iPCY) had longer time to next treatment, HR 4.57 (95% CI 1.77-11.8), log-rank P = 0.0076; immunotherapy subcohort n = 15, HR 7.01 (1.59-31); non-immunotherapy n = 19, HR 3.49 (1.01-12.1), P = 0.0898. Patient-level data in Supplementary Table 8 / Fig 8 source data (not yet downloaded) |
+
 Replication search, 2026-11-09 (PubMed, Europe PMC, OpenAlex; query `"Optim.AI" OR "KYAN Technologies" OR "quadratic phenotypic optimization"`):
 the platform is now sold as Optim.AI by KYAN Technologies (Rashid, a QPOP author, is listed with a KYAN affiliation in Sahib 2024).
 All further hits are from the same authors (Rashid, Lim, Chan, Chow), and most are conference abstracts, for example
