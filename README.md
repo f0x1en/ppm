@@ -1,33 +1,41 @@
-# Personalized dosing from a few noisy measurements
+# Checking the evidence for QPOP
 
-A small, runnable study of the idea behind CURATE.AI (NUS): fit a low-order curve or surface to a handful of dose-response measurements, then pick the best dose. The question is how far that gets you, and when it breaks.
+QPOP (quadratic phenotypic optimization platform, National University of Singapore) tests drug combinations on a patient's tumour cells in the lab, fits a quadratic surface, and ranks every possible combination. Its papers report high accuracy in blood cancers and an optimized drug pair for multiple myeloma.
 
-Everything is in `sim/curate_sim.ipynb`. The plots are interactive (rotate the 3D ones, use the noise sliders).
+This repo re-checks those claims using only what the papers themselves publish: main text, supplementary tables and raw data. Where data is missing, simulations fill the gap and are labelled as simulated.
 
-| Part | What it shows | Data |
-|---|---|---|
-| 1-3 | One drug, 3 noisy points, quadratic fit: success rate and regret vs noise | simulated |
-| 4-5 | Two drugs, 6 points, 3D response surface | simulated |
-| Case A | Prostate cancer, ZEN3694 + enzalutamide: predicted vs observed PSA | published numbers |
-| Case B | Liver transplant tacrolimus: standard dosing vs feedback dosing | published rates + simulated patients |
-| Case C | Multiple myeloma, two drugs with S-shaped kill curves | synthetic |
+## Verdict
 
-## Main finding
+QPOP's lab signal is real but modest, and the published numbers overstate it. The clinical benefit claims and the myeloma dose optimization are not supported by the papers' own data.
 
-The quadratic works when the truth is a smooth bowl and fails when it is not. On the myeloma-like surface it picks the exact best pair 9% of the time with zero noise (random pair: 5%). Less noise does not fix a wrong model shape, so a model check against the next observed response is needed.
+## Findings
 
-## Limits
+| Paper | Claim | What the published data show | Notebook |
+|---|---|---|---|
+| Rashid 2018, myeloma (mice) | QPOP found the optimal Dec + MitoC dose | Output column wrong in 5 of 9 rows; published model cannot be rebuilt from published data; leave-one-out error (15.7 days) is over twice the spread of the data (6.6 days); optimum sits at the highest tested dose | `qpop/mm_invivo_refit.ipynb` |
+| Rashid 2018, myeloma (patients) | Dec + MitoC beats clinical regimens ex vivo | 4 patient samples, no outcomes; text contradicts its own Table 4; no clinical study since | `docs/mm2018_notes.md` |
+| Sahib 2024, AML | 86.2% accuracy | Real signal (kappa 0.72), but on 29 of 63 samples, against a 62% do-nothing baseline, with the cutoff tuned on the same patients (simulated optimism: 7-11 points) | `qpop/qpop_evidence.ipynb` |
+| Lee 2025, lymphoma | 74.5% accuracy, 105 evaluable | Accuracy uses 47 of 126 cases; kappa 0.49, AUROC 0.69, 53% do-nothing baseline | `qpop/qpop_evidence.ipynb` |
+| Goh 2022 + Lee 2025, lymphoma | QPOP-guided therapy improves PFS | Paired per-patient PFS: median 81 vs 97 days (2022) and 105 vs 109 days (2025), sign tests p = 0.63 and 0.14; the PFS ratio tracks regression to the mean; one patient's prior PFS changed between papers (284 to 37 days) | `qpop/qpop_evidence.ipynb` |
+| All | - | One research group, no independent replication found, no randomized comparison | `docs/sources.md` |
 
-- No myeloma CURATE.AI dosing data was found (PubMed and Europe PMC, 2026-11-08). Case C is synthetic and proves nothing clinical.
-- Published CURATE.AI evidence is small, non-randomized studies, mostly from one group.
-- Noise levels and surface shapes are chosen by hand.
+Open questions and the data still missing are in `docs/gaps.md`.
+
+## Files
+
+- `qpop/` re-analysis notebooks with interactive plots (3D surfaces rotate; sliders switch views).
+- `docs/sources.md` every paper used, and how much of it was read.
+- `docs/mm2018_notes.md` page-referenced notes on the myeloma paper.
+- `docs/gaps.md` what cannot be checked yet, and how to get it.
+- `sim/curate_sim.ipynb` earlier background work: single-patient dose finding with a quadratic (CURATE.AI-style), simulated.
+- `tests/` checks that the notebooks still reproduce the published numbers.
+
+Paper PDFs are not included (copyright). Get them through the DOIs in `docs/sources.md`.
 
 ## Run
 
 ```
 uv venv && uv pip install -r requirements.txt
 .venv/bin/python -m pytest -q tests
-.venv/bin/jupyter lab sim/curate_sim.ipynb
+.venv/bin/jupyter lab
 ```
-
-`CURATE_AI.md`, `README_en.md` and `README_fa.md` are the earlier product proposal and feasibility study.
