@@ -290,3 +290,5 @@ def test_tacrolimus_rules():
     assert (far["linear"] < far["fixed"] - 0.15).all()          # feedback beats fixed dose everywhere
     assert (far["quadratic"] >= far["linear"]).all()            # quadratic never beats linear
     assert space["PAIRED"][("drift", "quadratic", "linear")][1] > 0   # significantly worse with drift
+    assert space["PAIRED"][("calibrated", "bayes", "linear")][2] < 0   # Bayesian better in the realistic scenario
+    assert abs(far.loc["calibrated", "linear"] - 0.242) < 0.05         # near the real trial arm (24.2%)
