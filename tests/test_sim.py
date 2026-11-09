@@ -252,3 +252,22 @@ def test_khong_primary_p_values():
     assert abs(p["two-sided Wilcoxon rank-sum (stated in legend)"] - 0.059) < 0.002
     assert abs(p["Welch t-test"] - 0.029) < 0.001
     assert abs(space["ROWS"]["avg daily deviation below range"][5] - 0.0096) < 0.0005
+
+
+DQ = Path(__file__).parent.parent / "qpop" / "decrease_vs_quadratic.ipynb"
+
+
+@pytest.mark.skipif(not DEC.exists(), reason="run scripts/fetch_open_data.sh first")
+def test_decrease_beats_quadratic():
+    import os
+    space, cwd = {}, os.getcwd()
+    os.chdir(DQ.parent)
+    try:
+        for cell in json.loads(DQ.read_text())["cells"]:
+            if cell["cell_type"] == "code":
+                exec("".join(cell["source"]), space)
+    finally:
+        os.chdir(cwd)
+    R = space["R"]
+    assert len(R) == 60
+    assert R.rmse_DECREASE.median() < R.rmse_Bliss.median() < R.rmse_quadratic.median()

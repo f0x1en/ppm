@@ -19,6 +19,7 @@ File names: `<first author><year>_<disease>_<what>_<source table>.csv`.
 | `khong2025_tacrolimus_rct_source_data.csv` | Khong et al., Nat Commun 2025, doi 10.1038/s41467-025-59739-6 (CC BY) | Supplementary Data sheets Figure 2-6 and Participants Data (group, target-range flag); rows joined by position (Group order identical across sheets) |
 | `chan2025_sarcoma_concordance.csv` | Chan et al., NPJ Precis Oncol 2025, doi 10.1038/s41698-025-00851-7 (CC BY) | Results text and Fig. 1 legend; TP/FP/FN/TN derived from the reported totals (unique solution, reproduces OR 13.5) |
 | `kropivsek2023_myeloma_tableS8_fig8b.csv` | Kropivsek et al., Nat Cancer 2023, doi 10.1038/s43018-023-00544-9 (CC BY) | Supplementary Table 8 (S8-Survival) joined with Source Data Fig. 8b (iPCY); columns renamed, values unchanged |
+| `decrease_predictions_60_matrices.csv` | DECREASE (Ianevski 2019) run by `scripts/run_decrease.R` | Predictions of the published example model for 60 of the 192 matrices (seed 2026); computed here, not copied from a paper |
 | `goh2022_lymphoma_tableS8_oacd_design.csv` | same | Supplement Table S8 (155-run, 12-drug, 3-level design; 0 none, 1 low, 2 high) |
 
 `tests/test_sim.py` checks that the notebooks use exactly these numbers.
