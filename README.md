@@ -70,12 +70,12 @@ The Science Translational Medicine papers are not included because the publisher
 
 ```
 uv venv && uv pip install -r requirements.txt
-sh scripts/fetch_open_data.sh        # open datasets into ext/ (needed for open_aml_check, real_surfaces_check)
+sh scripts/fetch_open_data.sh        # open datasets into ext/
 .venv/bin/python -m pytest -q tests
 .venv/bin/jupyter lab
 ```
 
-The notebooks read their inputs from `data/`, so they run without R. To regenerate the two computed datasets (optional, slow):
+No notebook needs R: computed results are stored in `data/`. Three notebooks also need the open datasets from `scripts/fetch_open_data.sh` (`open_aml_check`, `real_surfaces_check`, `decrease_vs_quadratic`); their tests are skipped without them. To regenerate the two computed datasets (optional, slow):
 
 ```
 # R 4.x with packages posologyr (tacrolimus simulation) and drc, xgboost 1.7.x, NNLM, mlrMBO, caret, DiceKriging (DECREASE)
