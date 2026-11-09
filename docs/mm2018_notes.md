@@ -1,6 +1,6 @@
 # Notes: Rashid et al. 2018, QPOP in multiple myeloma
 
-Source: main article PDF, 18 pages (doi 10.1126/scitranslmed.aan0941). Supplements not yet read.
+Source: main article PDF, 18 pages (doi 10.1126/scitranslmed.aan0941), plus supplements (see below).
 Page numbers refer to the article's own "N of 17" footer.
 
 ## What was done

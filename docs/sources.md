@@ -30,10 +30,10 @@ Every QPOP paper above comes from the same research group; no independent replic
 |---|---|---|---|
 | Tacrolimus, liver transplant, RCT | Khong et al., Nat Commun 2025, doi 10.1038/s41467-025-59739-6 (CC BY), NCT03527238 | full text + Supplementary Information (protocol) + source data | per-patient outcomes for 56 patients (`data/khong2025_tacrolimus_rct_source_data.csv`) |
 | Tacrolimus, paediatric liver transplant, retrospective | Tan et al., Adv Ther 2023, doi 10.1002/adtp.202300236 | not yet | - |
-| Warfarin, retrospective | Gan et al., Bioeng Transl Med 2025, doi 10.1002/btm2.10757, PMC12079355 | not yet | - |
-| Solid-tumour chemotherapy (PRECISE) | Blasiak et al., NPJ Precis Oncol 2025, doi 10.1038/s41698-025-00835-7, PMC11845749 | not yet | - |
-| Waldenström macroglobulinemia (PRECISE) | Blasiak et al., npj Digit Med 2024, doi 10.1038/s41746-024-01195-5, PMC11350179 | not yet | - |
-| Hypertension and type 2 diabetes, feasibility | Sumner et al., JAMIA Open 2026, doi 10.1093/jamiaopen/ooaf153, PMC12794016; protocol Mukhopadhyay 2022, PMC9332044 | not yet | - |
+| Warfarin, retrospective | Gan et al., Bioeng Transl Med 2025, doi 10.1002/btm2.10757, PMC12079355 | full text | see `docs/curate_notes.md` |
+| Solid-tumour chemotherapy (PRECISE) | Blasiak et al., NPJ Precis Oncol 2025, doi 10.1038/s41698-025-00835-7, PMC11845749 | full text | see `docs/curate_notes.md` |
+| Waldenström macroglobulinemia (PRECISE) | Blasiak et al., npj Digit Med 2024, doi 10.1038/s41746-024-01195-5, PMC11350179 | full text | see `docs/curate_notes.md` |
+| Hypertension and type 2 diabetes, feasibility | Sumner et al., JAMIA Open 2026, doi 10.1093/jamiaopen/ooaf153, PMC12794016; protocol Mukhopadhyay 2022, PMC9332044 | full text | see `docs/curate_notes.md` |
 | Hypertension, pilot RCT | Wang et al., Eur Heart J 2026 suppl (abstract), doi 10.1093/eurheartj/ehag785.3053; protocol Truong 2024, PMC10802822 | not yet | - |
 | Prostate cancer, single patient | Pantuck et al., Adv Ther 2018 | numbers used in `sim/curate_sim.ipynb` | - |
 
