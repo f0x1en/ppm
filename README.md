@@ -82,3 +82,9 @@ No notebook needs R: computed results are stored in `data/`. Three notebooks als
 Rscript scripts/sim_tacrolimus.R 60 base ext/sim/base.csv          # also: lownoise, drift
 Rscript scripts/run_decrease.R ids.txt ext/decrease_runs/out.csv     # one PairIndex per line
 ```
+
+## License
+
+- Code (notebooks, scripts, tests): MIT, see `LICENSE`.
+- Text and analysis written for this repo (README, `docs/`, notebook commentary and figures): [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+- Third-party material keeps its own licence: numbers in `data/` come from the papers listed in `data/README.md`; `articles/lee2025_lymphoma_jcopo_CC-BY-4.0.pdf` is CC BY 4.0 (Lee et al. 2025). DECREASE (GPL-3) and posologyr (AGPL-3) are used, not copied.
