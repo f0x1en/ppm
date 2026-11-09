@@ -271,3 +271,22 @@ def test_decrease_beats_quadratic():
     R = space["R"]
     assert len(R) == 60
     assert R.rmse_DECREASE.median() < R.rmse_Bliss.median() < R.rmse_quadratic.median()
+
+
+TS = Path(__file__).parent.parent / "dosing" / "tacrolimus_rules_sim.ipynb"
+
+
+def test_tacrolimus_rules():
+    import os
+    space, cwd = {}, os.getcwd()
+    os.chdir(TS.parent)
+    try:
+        for cell in json.loads(TS.read_text())["cells"]:
+            if cell["cell_type"] == "code":
+                exec("".join(cell["source"]), space)
+    finally:
+        os.chdir(cwd)
+    far = space["SUMMARY"]["far"]
+    assert (far["linear"] < far["fixed"] - 0.15).all()          # feedback beats fixed dose everywhere
+    assert (far["quadratic"] >= far["linear"]).all()            # quadratic never beats linear
+    assert space["PAIRED"][("drift", "quadratic", "linear")][1] > 0   # significantly worse with drift

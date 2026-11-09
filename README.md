@@ -21,6 +21,7 @@ This repo re-checks both with the papers' own published numbers, open datasets f
 | Blasiak 2025, chemotherapy, solid tumours (n = 10) | Feasible | 3 of 10 reached the dosing phase; doses boxed into 50-100% of standard; no outcome comparison | `docs/curate_notes.md` |
 | Blasiak 2024, Waldenström macroglobulinemia (n = 1) | "Potential" for engagement and clinical efficacy | One patient, no comparator; IgM noisy within cycles | `docs/curate_notes.md` |
 | Gan 2025, warfarin, retrospective (n = 127) | Better prediction than other models | CURATE.AI's linear variant predicted slightly better than its quadratic; no head-to-head on the same data; modelled time in range not different from physicians | `docs/curate_notes.md` |
+| Head-to-head on virtual patients (published tacrolimus model, 60 x 3 scenarios) | - | Any feedback rule beats a fixed dose by 20-42 points of far-off days; CURATE.AI's quadratic never beats its linear variant (worse by 8-11 points with drift or low noise); full Bayesian dosing (posologyr) adds at most about 5 points over the linear rule | `dosing/tacrolimus_rules_sim.ipynb` |
 | Single-patient simulation | A 3-point quadratic finds the best dose | Works with low noise and a bowl-shaped truth; fails when the true curve is not a bowl | `sim/curate_sim.ipynb` |
 
 ## Drug selection (supporting section): QPOP
@@ -45,7 +46,8 @@ Open questions and the data still missing are in `docs/gaps.md`.
 
 ## Files
 
-- `dosing/` re-analysis of the CURATE.AI randomized trial (per-patient source data).
+- `dosing/` re-analysis of the CURATE.AI randomized trial (per-patient source data) and the dosing-rule head-to-head on virtual patients.
+- `scripts/` R runners: `sim_tacrolimus.R` (needs R + posologyr), `run_decrease.R` (needs R + DECREASE dependencies), `fetch_open_data.sh`.
 - `qpop/` QPOP re-analysis notebooks with interactive plots (3D surfaces rotate; sliders switch views).
 - `docs/curate_notes.md` notes on the five CURATE.AI dosing studies.
 - `docs/sources.md` every paper used, and how much of it was read.
