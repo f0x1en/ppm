@@ -9,8 +9,15 @@ This repo re-checks both with the papers' own published numbers, open datasets f
 
 ## Verdict
 
-- **Per-patient feedback dosing is sound, but the evidence is for the simple version.** The one randomized trial supports CURATE.AI's linear (proportional) variant for tacrolimus, mainly by avoiding under-dosing, and even that result is weaker than reported (P = 0.059 with the test the paper names). The quadratic variant has never been shown to beat simpler rules or usual care, and most patients never collect enough data to calibrate it.
-- **Lab testing of a patient's cells has real but modest predictive value** in independent work (myeloma, 34 patients). QPOP's own papers overstate it every time: tuned cutoffs, selected samples, weak baselines, and a myeloma dose "optimization" that its own data do not support.
+- **Per-patient feedback dosing is sound, but the evidence is for the simple version.** The one randomized trial supports CURATE.AI's linear (proportional) variant for tacrolimus, mainly by avoiding under-dosing, and even that result is weaker than reported (P = 0.059 with the test the paper names). The quadratic variant has never been shown to beat simpler rules or usual care, and most patients never collect enough data to calibrate it. On virtual patients from a published tacrolimus model, the quadratic never beats the linear rule, and full Bayesian dosing adds little.
+- **Lab testing of a patient's cells has real but modest predictive value** in independent work (myeloma, 34 patients). QPOP's own papers overstate it every time: tuned cutoffs, selected samples, weak baselines, and a myeloma dose "optimization" that its own data do not support. On real measured combination surfaces, an open published method (DECREASE) and even the plain Bliss baseline fill in the surface better than QPOP's quadratic.
+
+## What you can use from this
+
+1. **For drugs whose level rises in proportion to dose (tacrolimus), a proportional trough-based rule gets most of the benefit** of personalized dosing: new dose = current dose x target / measured trough. Bayesian dosing with a population model (open tool: [posologyr](https://cran.r-project.org/package=posologyr)) adds a little, and helps most when the model fits the patient.
+2. **Do not fit a quadratic to 3 noisy points of one patient** unless the response really peaks with dose. Where tested, it did no better than a straight line.
+3. **To fill in a drug-combination surface from few measurements, start from Bliss and from DECREASE** ([GitHub](https://github.com/IanevskiAleksandr/DECREASE)), not a quadratic.
+4. **When reading an "accuracy" claim for a lab test of patient cells, ask**: what is the do-nothing baseline, was the cutoff chosen on the same patients, how many samples were dropped, and is every outcome a different patient? Every QPOP paper here fails at least one of these.
 
 ## Dose optimization (main thread): CURATE.AI
 
@@ -25,7 +32,6 @@ This repo re-checks both with the papers' own published numbers, open datasets f
 | Single-patient simulation | A 3-point quadratic finds the best dose | Works with low noise and a bowl-shaped truth; fails when the true curve is not a bowl | `sim/curate_sim.ipynb` |
 
 ## Drug selection (supporting section): QPOP
-
 
 | Paper | Claim | What the published data show | Notebook |
 |---|---|---|---|
