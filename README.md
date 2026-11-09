@@ -17,7 +17,7 @@ This repo re-checks both with the papers' own published numbers, open datasets f
 1. **For drugs whose level rises in proportion to dose (tacrolimus), a proportional trough-based rule gets most of the benefit** of personalized dosing: new dose = current dose x target / measured trough. Bayesian dosing with a population model (open tool: [posologyr](https://cran.r-project.org/package=posologyr)) adds a little, and helps most when the model fits the patient.
 2. **Do not fit a quadratic to 3 noisy points of one patient** unless the response really peaks with dose. Where tested, it did no better than a straight line.
 3. **To fill in a drug-combination surface from few measurements, start from Bliss and from DECREASE** ([GitHub](https://github.com/IanevskiAleksandr/DECREASE)), not a quadratic.
-4. **When reading an "accuracy" claim for a lab test of patient cells, ask**: what is the do-nothing baseline, was the cutoff chosen on the same patients, how many samples were dropped, and is every outcome a different patient? Every QPOP paper here fails at least one of these.
+4. **When reading an "accuracy" claim for a lab test of patient cells, ask**: what is the do-nothing baseline, was the cutoff chosen on the same patients, how many samples were dropped, and is every outcome a different patient? All three QPOP accuracy claims checked here (AML, lymphoma, sarcoma) fail at least one.
 
 ## Dose optimization (main thread): CURATE.AI
 
@@ -73,4 +73,12 @@ uv venv && uv pip install -r requirements.txt
 sh scripts/fetch_open_data.sh        # open datasets into ext/ (needed for open_aml_check, real_surfaces_check)
 .venv/bin/python -m pytest -q tests
 .venv/bin/jupyter lab
+```
+
+The notebooks read their inputs from `data/`, so they run without R. To regenerate the two computed datasets (optional, slow):
+
+```
+# R 4.x with packages posologyr (tacrolimus simulation) and drc, xgboost 1.7.x, NNLM, mlrMBO, caret, DiceKriging (DECREASE)
+Rscript scripts/sim_tacrolimus.R 60 base ext/sim/base.csv          # also: lownoise, drift
+Rscript scripts/run_decrease.R ids.txt ext/decrease_runs/out.csv     # one PairIndex per line
 ```
