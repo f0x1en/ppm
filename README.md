@@ -85,6 +85,6 @@ Rscript scripts/run_decrease.R ids.txt ext/decrease_runs/out.csv     # one PairI
 
 ## License
 
-- Code (notebooks, scripts, tests): MIT, see `LICENSE`.
-- Text and analysis written for this repo (README, `docs/`, notebook commentary and figures): [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-- Third-party material keeps its own licence: numbers in `data/` come from the papers listed in `data/README.md`; `articles/lee2025_lymphoma_jcopo_CC-BY-4.0.pdf` is CC BY 4.0 (Lee et al. 2025). DECREASE (GPL-3) and posologyr (AGPL-3) are used, not copied.
+Everything written for this repo (code, notebooks, scripts, tests, README, `docs/`, figures) is dedicated to the public domain under [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/), see `LICENSE`. Use it for anything, no credit needed.
+
+Third-party material is not ours to relicense and keeps its own terms: the numbers in `data/` come from the papers listed in `data/README.md`; `articles/lee2025_lymphoma_jcopo_CC-BY-4.0.pdf` is CC BY 4.0 (Lee et al. 2025). DECREASE (GPL-3) and posologyr (AGPL-3) are used, not copied.
