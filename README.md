@@ -31,6 +31,12 @@ This repo re-checks both with the papers' own published numbers, open datasets f
 | Head-to-head on virtual patients (published tacrolimus model, calibrated to the trial with held-out checks) | - | Realistic scenario: linear rule 22.5% far-off days (trial arm 24.2%), Bayesian dosing (posologyr) 14.6% (7.9 points better), CURATE.AI quadratic 30.0% (7.5 points worse than linear). Across all scenarios the quadratic never beats the linear rule | `dosing/tacrolimus_rules_sim.ipynb`, `dosing/calibration.ipynb` |
 | Single-patient simulation | A 3-point quadratic finds the best dose | Works with low noise and a bowl-shaped truth; fails when the true curve is not a bowl | `sim/curate_sim.ipynb` |
 
+![Days far off target by dosing rule](figures/tacrolimus_rules.png)
+
+![Trial: deviation below and above range](figures/khong_deviation.png)
+
+![Calibration: synthetic vs real trial statistics](figures/calibration.png)
+
 ## Drug selection (supporting section): QPOP
 
 | Paper | Claim | What the published data show | Notebook |
@@ -48,6 +54,10 @@ This repo re-checks both with the papers' own published numbers, open datasets f
 | Shared premise, on independent open data (Malani 2022, FIMM, CC BY) | Lab sensitivity of a patient's cells predicts clinical response | 42 AML patients on intensive induction: lab sensitivity to their induction drugs gives AUC 0.44-0.67 (intervals include 0.5); age alone gives 0.74, genetic risk class 0.70 | `qpop/open_aml_check.ipynb` |
 | Method itself (simulation on the real 155-run design) | Quadratic over 155 runs finds the best combination | Fair in principle: with low noise the true best doublet is in the top 3 most of the time, and drug-drug terms clearly help when synergy exists. At plausible assay noise the top-3 hit rate falls to about 40-75%. Truth model is made up | `qpop/qpop_design_stress.ipynb` |
 
+![DECREASE vs quadratic vs Bliss](figures/decrease_vs_quadratic.png)
+
+![AML sample funnel and accuracy vs baseline](figures/aml_funnel.png)
+
 Open questions and the data still missing are in `docs/gaps.md`.
 
 ## Files
@@ -60,6 +70,7 @@ Open questions and the data still missing are in `docs/gaps.md`.
 - `docs/mm2018_notes.md` page-referenced notes on the myeloma paper.
 - `docs/gaps.md` what cannot be checked yet, and how to get it.
 - `sim/curate_sim.ipynb` simulation of single-patient quadratic dose finding, plus early case notes.
+- `figures/` static PNGs shown in this README, made by `scripts/make_figures.py` from `data/`.
 - `data/` every published number used, one CSV per source table, with sources in `data/README.md`.
 - `articles/` papers whose license allows redistribution (currently Lee 2025, CC BY 4.0).
 - `tests/` checks that the notebooks still reproduce the published numbers and match `data/`.
@@ -73,6 +84,7 @@ uv venv && uv pip install -r requirements.txt
 sh scripts/fetch_open_data.sh        # open datasets into ext/
 .venv/bin/python -m pytest -q tests
 .venv/bin/jupyter lab
+.venv/bin/python scripts/make_figures.py   # README figures into figures/
 ```
 
 No notebook needs R: computed results are stored in `data/`. Three notebooks also need the open datasets from `scripts/fetch_open_data.sh` (`open_aml_check`, `real_surfaces_check`, `decrease_vs_quadratic`); their tests are skipped without them. To regenerate the two computed datasets (optional, slow):
